@@ -182,20 +182,23 @@ if __name__ == "__main__":
     X_val_right = load_data(os.path.join(parent, 'datasets', f'obd_driverwise_{data}', f'obd___X_val_right_{context}.h5'))
     print(f"Dataset loaded.", flush=True)
 
-    # param_grid = {
-    # "lr" : [0.0001, 0.001, 0.01, 0.1],
-    # "batch_size" : [128, 256, 512],
-    # "hidden_size" : [64, 128, 256, 512],
-    # "num_layers" : [1, 2, 3, 4],
-    # "bidirectional" : [True, False]
-    # }
+    # Full grid search
     param_grid = {
-    "lr" : [0.001],
-    "batch_size" : [128],
-    "hidden_size" : [256],
-    "num_layers" : [1],
-    "bidirectional" : [False]
+    "lr" : [0.0001, 0.001, 0.01, 0.1],
+    "batch_size" : [128, 256, 512],
+    "hidden_size" : [64, 128, 256, 512],
+    "num_layers" : [1, 2, 3, 4],
+    "bidirectional" : [True, False]
     }
+
+    # Sanity check while writing code
+    # param_grid = {
+    # "lr" : [0.001],
+    # "batch_size" : [128],
+    # "hidden_size" : [256],
+    # "num_layers" : [1],
+    # "bidirectional" : [False]
+    # }
 
     metadata = grid_search_trainer(
         dataset_name, param_grid,
